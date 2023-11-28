@@ -52,12 +52,6 @@ INSTALLED TO: /usr/local/sbin
 btrbk
 -->
 
-<FILE Method="install" Name="&plg;/README">
-<INLINE>
-Please check: https://github.com/digint/btrbk
-</INLINE>
-</FILE>
-
 <!-- pre install - remove old files -->
 <FILE Method="install" Run="/bin/bash">
 	<INLINE>
