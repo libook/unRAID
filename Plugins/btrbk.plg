@@ -80,7 +80,7 @@ Please check: https://github.com/digint/btrbk
 </FILE>
 
 <!-- config file -->
-<FILE Method="install" Name="&plg;/btrbk.conf;">
+<FILE Method="install" Name="&plg;/&name;.conf">
 	<URL>&sourceURL;/&name;.conf.example</URL>
 </FILE>
 
