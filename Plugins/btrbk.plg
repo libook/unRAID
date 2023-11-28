@@ -12,7 +12,7 @@
 	<!ENTITY pld                "/boot/config/plugins">
 	<!ENTITY plg                "&pld;/&name;">
 	<!ENTITY epld               "/usr/local/emhttp/plugins/&name;">
-	<!ENTITY ghm                "https://github.com/&author;/unRAID/raw/master">
+	<!ENTITY ghm                "https://github.com/&author;/unRAID/raw/main">
 	<!ENTITY pluginURL          "&ghm;/Plugins/&name;.plg">
 	<!ENTITY sourceURL          "https://raw.githubusercontent.com/&sourceAuthor;/&name;/v&sourceVersion;/&name;">
 	<!ENTITY supportURL         "https://forums.unraid.net/topic/">
