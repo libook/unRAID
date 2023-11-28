@@ -5,7 +5,7 @@
 	<!ENTITY displayName        "A backup tool for btrfs subvolumes">
 	<!ENTITY author             "libook">
 	<!ENTITY sourceAuthor       "digint">
-	<!ENTITY plgVersion         "2023.11.28">
+	<!ENTITY plgVersion         "2023.11.28-1">
 	<!ENTITY sourceVersion      "0.32.6">
 	<!ENTITY icon               "terminal">
 	<!ENTITY md5                "9a69e76230712c0cc060762c40699b4f">
@@ -75,6 +75,7 @@ Please check: https://github.com/digint/btrbk
 <FILE Method="install" Run="/bin/bash">
 	<INLINE>
 	cp &plg;/&name;-&plgVersion; /usr/local/sbin/&name;
+    chmod +x /usr/local/sbin/&name;
 	</INLINE>
 </FILE>
 
