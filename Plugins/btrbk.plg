@@ -1,0 +1,108 @@
+<?xml version='1.0' standalone='yes'?>
+
+<!DOCTYPE PLUGIN [
+	<!ENTITY name               "btrbk">
+	<!ENTITY displayName        "A backup tool for btrfs subvolumes">
+	<!ENTITY author             "libook">
+	<!ENTITY sourceAuthor       "digint">
+	<!ENTITY plgVersion         "2023.11.28">
+	<!ENTITY sourceVersion      "0.32.6">
+	<!ENTITY icon               "terminal">
+	<!ENTITY md5                "9a69e76230712c0cc060762c40699b4f">
+	<!ENTITY pld                "/boot/config/plugins">
+	<!ENTITY plg                "&pld;/&name;">
+	<!ENTITY epld               "/usr/local/emhttp/plugins/&name;">
+	<!ENTITY ghm                "https://github.com/&author;/unRAID/raw/master">
+	<!ENTITY pluginURL          "&ghm;/Plugins/&name;.plg">
+	<!ENTITY sourceURL          "https://raw.githubusercontent.com/&sourceAuthor;/&name;/v&sourceVersion;/&name;">
+	<!ENTITY supportURL         "https://forums.unraid.net/topic/">
+]>
+
+<PLUGIN
+	name="&name;"
+	author="&author;"
+	version="&plgVersion;"
+	icon="&icon;"
+	pluginURL="&pluginURL;"
+	support="&supportURL;"
+>
+
+<CHANGES>
+###2023.11.28
+- create this plugin
+</CHANGES>
+
+<!--
+=========================================================================
+License
+=========================================================================
+
+GNU General Public License v3 (GPL v3)
+
+=========================================================================
+List of files created by this plugin
+=========================================================================
+
+INSTALLED TO: /boot/config/plugins/btrbk
+
+btrbk-&plgVersion;
+README
+
+INSTALLED TO: /usr/local/sbin
+btrbk
+-->
+
+<FILE Method="install" Name="&plg;/README">
+<INLINE>
+Please check: https://github.com/digint/btrbk
+</INLINE>
+</FILE>
+
+<!-- pre install - remove old files -->
+<FILE Method="install" Run="/bin/bash">
+	<INLINE>
+	rm -f $(ls &plg;/&name; 2&gt;/dev/null|grep -v '&plgVersion;')
+	</INLINE>
+</FILE>
+
+<!-- download -->
+<FILE Method="install" Name="&plg;/&name;-&plgVersion;">
+	<URL>&sourceURL;</URL>
+	<MD5>&md5;</MD5>
+</FILE>
+
+<!-- install -->
+<FILE Method="install" Run="/bin/bash">
+	<INLINE>
+	cp &plg;/&name;-&plgVersion; /usr/local/sbin/&name;
+	</INLINE>
+</FILE>
+
+<!-- post install -->
+<FILE Method="install" Run="/bin/bash">
+	<INLINE>
+	echo ""
+	echo "----------------------------------------------------"
+	echo " &name; has been installed."
+	echo " Version: &plgVersion;"
+	echo "----------------------------------------------------"
+	echo ""
+	</INLINE>
+</FILE>
+
+<!-- uninstall -->
+<FILE Method="remove" Run="/bin/bash">
+	<INLINE>
+	[ -f &plg;/&name;-* ] &amp;&amp; rm -rf &plg;/&name;-*
+	[ -f /usr/local/sbin/&name; ] &amp;&amp; rm -f /usr/local/sbin/&name;
+	[ -d &epld; ] &amp;&amp; rm -rf &epld;
+	echo ""
+	echo "----------------------------------------------------"
+	echo " &name; has been removed."
+	echo " Version: &plgVersion;"
+	echo "----------------------------------------------------"
+	echo ""
+	</INLINE>
+</FILE>
+
+</PLUGIN>
