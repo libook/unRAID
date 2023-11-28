@@ -14,7 +14,7 @@
 	<!ENTITY epld               "/usr/local/emhttp/plugins/&name;">
 	<!ENTITY ghm                "https://github.com/&author;/unRAID/raw/main">
 	<!ENTITY pluginURL          "&ghm;/Plugins/&name;.plg">
-	<!ENTITY sourceURL          "https://raw.githubusercontent.com/&sourceAuthor;/&name;/v&sourceVersion;/&name;">
+	<!ENTITY sourceURL          "https://raw.githubusercontent.com/&sourceAuthor;/&name;/v&sourceVersion;">
 	<!ENTITY supportURL         "https://forums.unraid.net/topic/">
 ]>
 
@@ -67,7 +67,7 @@ Please check: https://github.com/digint/btrbk
 
 <!-- download -->
 <FILE Method="install" Name="&plg;/&name;/&name;-&plgVersion;">
-	<URL>&sourceURL;</URL>
+	<URL>&sourceURL;/&name;</URL>
 	<MD5>&md5;</MD5>
 </FILE>
 
@@ -77,6 +77,11 @@ Please check: https://github.com/digint/btrbk
 	cp &plg;/&name;/&name;-&plgVersion; /usr/local/sbin/&name;
     chmod +x /usr/local/sbin/&name;
 	</INLINE>
+</FILE>
+
+<!-- config file -->
+<FILE Method="install" Name="&plg;/btrbk.conf;">
+	<URL>&sourceURL;/&name;.conf.example</URL>
 </FILE>
 
 <!-- post install -->
