@@ -1,0 +1,23 @@
+name: Dependencies Build mbuffer
+on: workflow_dispatch
+jobs:
+  build:
+    strategy:
+      matrix:
+        version: [20240707]
+    runs-on: ubuntu-latest
+    container: andy5995/slackware-build-essential:15.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build mbuffer
+        run: |
+          ./Dependencies/mbuffer/build.sh
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          name: mbuffer v${{ matrix.version }}
+          draft: false
+          files: |
+            /tmp/mbuffer-*.tgz
+          generate_release_notes: false
