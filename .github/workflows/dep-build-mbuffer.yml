@@ -15,8 +15,8 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          name: mbuffer v${{ matrix.version }}
-          tag_name: main
+          name: mbuffer-v${{ matrix.version }}
+          tag_name: mbuffer-v${{ matrix.version }}
           draft: false
           files: |
             /tmp/mbuffer-*.tgz
