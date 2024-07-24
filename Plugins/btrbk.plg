@@ -31,6 +31,8 @@
 >
 
 <CHANGES>
+###2024.07.24
+- add mbuffer as dependency for mbuffer
 ###2023.11.28
 - create this plugin
 </CHANGES>
