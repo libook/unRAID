@@ -5,10 +5,13 @@
     <!ENTITY displayName        "A backup tool for btrfs subvolumes">
     <!ENTITY author             "libook">
     <!ENTITY sourceAuthor       "digint">
-    <!ENTITY plgVersion         "2023.11.28-1">
+    <!ENTITY plgVersion         "2024.07.24-1">
     <!ENTITY sourceVersion      "0.32.6">
     <!ENTITY icon               "terminal">
     <!ENTITY md5                "9a69e76230712c0cc060762c40699b4f">
+    <!ENTITY mbufferVersion     "20240707">
+    <!ENTITY mbufferURL         "https://github.com/libook/unRAID/releases/download/mbuffer-v&mbufferVersion;/mbuffer-&mbufferVersion;-x86_64-1_SBo.tgz">
+    <!ENTITY mbufferMD5         "6a3b98c49c4bd39b262f312daf79968f">
     <!ENTITY pld                "/boot/config/plugins">
     <!ENTITY plg                "&pld;/&name;">
     <!ENTITY epld               "/usr/local/emhttp/plugins/&name;">
@@ -55,7 +58,7 @@ btrbk
 <!-- pre install - remove old files -->
 <FILE Method="install" Run="/bin/bash">
     <INLINE>
-    rm -f $(ls &plg;/&name; 2&gt;/dev/null|grep -v '&plgVersion;')
+    rm -f $(ls &plg;/&name; 2&gt;/dev/null | grep -v '&plgVersion; | grep -v '&mbufferVersion;')
     </INLINE>
 </FILE>
 
@@ -63,6 +66,10 @@ btrbk
 <FILE Method="install" Name="&plg;/&name;/&name;-&plgVersion;">
     <URL>&sourceURL;/&name;</URL>
     <MD5>&md5;</MD5>
+</FILE>
+<FILE Method="install" Name="&plg;/&name;/mbuffer-&mbufferVersion;-x86_64-1_SBo.tgz" Run="upgradepkg --install-new --reinstall">
+    <URL>&mbufferURL;</URL>
+    <MD5>&mbufferMD5;</MD5>
 </FILE>
 
 <!-- install -->
@@ -96,6 +103,9 @@ btrbk
     [ -d &plg;/&name; ] &amp;&amp; rm -rf &plg;/&name;
     [ -f /usr/local/sbin/&name; ] &amp;&amp; rm -f /usr/local/sbin/&name;
     [ -d &epld; ] &amp;&amp; rm -rf &epld;
+
+    removepkg mbuffer;
+
     echo ""
     echo "----------------------------------------------------"
     echo " &name; has been removed."
