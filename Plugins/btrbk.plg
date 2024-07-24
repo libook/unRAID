@@ -60,7 +60,7 @@ btrbk
 <!-- pre install - remove old files -->
 <FILE Method="install" Run="/bin/bash">
     <INLINE>
-    rm -f $(ls &plg;/&name; 2&gt;/dev/null | grep -v '&plgVersion; | grep -v '&mbufferVersion;')
+    rm -f $(ls &plg;/&name; 2&gt;/dev/null | grep -v '&plgVersion;' | grep -v '&mbufferVersion;')
     </INLINE>
 </FILE>
 
